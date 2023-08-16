@@ -1,0 +1,138 @@
+/* Importing custom font face */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Space+Mono:wght@400;700&display=swap");
+
+button.outline {
+  color: var(--color);
+  background-color: transparent;
+  border: 1px solid var(--color);
+}
+
+button,
+header.dark ul button.outline {
+  --color: #2f80ed;
+
+  border: none;
+  outline: none;
+  padding: 10px;
+  cursor: pointer;
+  border-radius: 2.5px;
+  color: var(--color-white);
+  background-color: var(--color);
+}
+
+/* ------------ HEADER START ------------ */
+header {
+  width: 100%;
+  padding-top: 30px;
+  margin-bottom: 24px;
+  padding-bottom: 24px;
+  background-color: var(--color-white);
+}
+
+header.dark {
+  filter: invert(100%);
+}
+
+header nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+header img.logo {
+  filter: invert(100%);
+}
+
+header div > ul {
+  gap: 10px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+header ul li {
+  list-style: none;
+}
+
+header ul a {
+  text-decoration: none;
+  color: var(--color-primary);
+  font-family: "Poppins", sans-serif;
+}
+
+header li a.active,
+header li a:hover {
+  border-bottom: 1px solid currentColor;
+}
+/* ------------- HEADER END ------------- */
+
+/* ------------ LOCATION INPUT ------------- */
+.input--container div {
+  position: relative;
+}
+
+.input--container img {
+  right: 0;
+  top: 50%;
+  bottom: 0;
+  left: 10px;
+  z-index: 10;
+  position: absolute;
+  pointer-events: none;
+  transform: translateY(-50%);
+}
+
+.input--container input,
+.input--container button {
+  width: 100%;
+  border: none;
+  outline: none;
+  padding: 10px;
+  padding-left: 35px;
+  border-radius: 5px;
+  background-color: var(--color-offwhite);
+}
+
+.input--container button {
+  padding: 0;
+  text-align: left;
+  color: var(--color-primary)
+}
+
+.input--container ul {
+  width: 100%;
+  display: flex;
+  list-style: none;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  background-color: var(--color-offwhite);
+}
+
+.input--container li {
+  width: 100%;
+  padding: 5px;
+  font-size: 14px;
+  cursor: pointer;
+  font-family: "Poppins", sans-serif;
+  background-color: var(--color-white);
+  border-bottom: 2px solid var(--color-offwhite);
+}
+
+.input--container > div > div {
+  width: 100%;
+}
+
+.input--container > div * {
+  font-family: "Poppins", sans-serif !important;
+}
+
+/* ----------- LOCATION INPUT END ----------- */
+
+/* Setting horizontal spacing around the whole website  */
+main,
+header {
+  padding-left: 100px;
+  padding-right: 100px;
+}

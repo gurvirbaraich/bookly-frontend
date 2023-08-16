@@ -1,24 +1,27 @@
-name: Prettier
-
-on:
-  push:
-  pull_request:
+name: auto-format
+on: 
+- pull_request
+- push
 
 jobs:
   format:
+    # Check if the PR is not from a fork
+    if: github.event.pull_request.head.repo.full_name == github.repository
     runs-on: ubuntu-latest
-    name: Prettier
     steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
+      - uses: actions/checkout@v1
         with:
-          node-version: "16"
-      - name: Prettier
-        run: npx prettier --write **/*.jsx
-        env:
-          GITHUB_TOKEN: ${{ secrets._GITHUB_TOKEN }}
-
-      - uses: stefanzweifel/git-auto-commit-action@v4
-        if: ${{ github.event_name == 'push' || github.event_name == 'workflow_dispatch' }}
-        with:
-          commit_message: "style: files formatted"
+          ref: ${{ github.head_ref }}
+      - name: prettier
+        run: npx prettier --write src/**/*.jsx
+      - name: Check for modified files
+        id: git-check
+        run: echo "modified=$(if git diff-index --quiet HEAD --; then echo "false"; else echo "true"; fi)" >> $GITHUB_OUTPUT
+      - name: Push changes
+        if: steps.git-check.outputs.modified == 'true'
+        run: |
+          git config --global user.name 'Peter Evans'
+          git config --global user.email 'peter-evans@users.noreply.github.com'
+          git remote set-url origin https://x-access-token:${{ secrets._GITHUB_TOKEN }}@github.com/${{ github.repository }}
+          git commit -am "Formatted Files"
+          git push

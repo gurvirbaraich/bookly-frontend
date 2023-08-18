@@ -53,6 +53,7 @@ export default function LocationPicker({ onLocationChange }) {
 
   const selectPlace = (place) => {
     setPlaces([]);
+    // getHotels(place.place_id);
 
     locationInputRef.current.value = `${place.address_line1}, ${place.state}, ${place.country}`;
     onLocationChange(locationInputRef.current.value);
@@ -86,3 +87,60 @@ export default function LocationPicker({ onLocationChange }) {
     </div>
   );
 }
+
+// eslint-disable-next-line no-unused-vars
+const getHotels = async function (placeId) {
+  const request = await fetch(
+    "https://api.geoapify.com/v2/places?apiKey=55b7be14f46d4b179d86757fef09c7ad&categories=accommodation&filter=place:" +
+      placeId
+  );
+
+  const json = await request.json();
+
+  json?.features.map(async function (feature) {
+    const req = await fetch(
+      "https://api.geoapify.com/v2/place-details?apiKey=55b7be14f46d4b179d86757fef09c7ad&id=" +
+        feature.properties.place_id
+    );
+
+    const { features } = await req.json();
+
+    features.map(async function ({ properties }) {
+      const { name, place_id, city, country } = properties;
+
+      const payload = {
+        coords: {
+          lat: properties.lat,
+          lng: properties.lon,
+        },
+
+        description: "...",
+        address: properties.formatted,
+        rating: ((Math.random() * 4) + 1).toFixed(),
+        price: (Math.random() * 9999).toFixed(),
+        image: "https://source.unsplash.com/random/?Hotel",
+
+        name,
+        city,
+        country,
+        place_id,
+      };
+
+      const createHotelRequest = await fetch(
+        "http://localhost:4000/api/hotels",
+        {
+          method: "POST",
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(payload),
+        }
+      );
+
+      const createHotelResponse = await createHotelRequest.json();
+
+      console.log(createHotelResponse);
+    });
+  });
+};

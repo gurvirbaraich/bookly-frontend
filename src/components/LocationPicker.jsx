@@ -2,7 +2,7 @@
 import LocationIcon from "../assets/images/location.svg";
 import { useEffect, useRef, useState } from "react";
 
-export default function LocationPicker({ onLocationChange }) {
+export default function LocationPicker({ onLocationChange, defaultLocation }) {
   if (!onLocationChange) {
     onLocationChange = function () {};
   }
@@ -55,8 +55,8 @@ export default function LocationPicker({ onLocationChange }) {
     setPlaces([]);
     // getHotels(place.place_id);
 
+    onLocationChange(place.address_line1);
     locationInputRef.current.value = `${place.address_line1}, ${place.state}, ${place.country}`;
-    onLocationChange(locationInputRef.current.value);
   };
 
   useEffect(function () {
@@ -72,6 +72,7 @@ export default function LocationPicker({ onLocationChange }) {
         <input
           type="text"
           ref={locationInputRef}
+          defaultValue={defaultLocation}
           placeholder="Where are you going?"
         />
       </div>

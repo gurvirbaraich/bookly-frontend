@@ -24,7 +24,6 @@ header.dark ul button.outline {
 header {
   width: 100%;
   padding-top: 30px;
-  margin-bottom: 24px;
   padding-bottom: 24px;
   background-color: var(--color-white);
 }
@@ -97,7 +96,7 @@ header li a:hover {
 .input--container button {
   padding: 0;
   text-align: left;
-  color: var(--color-primary)
+  color: var(--color-primary);
 }
 
 .input--container ul {
@@ -131,8 +130,8 @@ header li a:hover {
 /* ----------- LOCATION INPUT END ----------- */
 
 /* Setting horizontal spacing around the whole website  */
-main,
-header {
+header,
+.container {
   padding-left: 100px;
   padding-right: 100px;
 }

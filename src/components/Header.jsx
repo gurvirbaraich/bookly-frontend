@@ -20,7 +20,7 @@ export default function Header() {
               <Link className="active" to={"/"}>Home</Link>
             </li>
             <li>
-              <Link to={"/"}>Discover</Link>
+              <Link to={"/discover"}>Discover</Link>
             </li>
             <li>
               <Link to={"/"}>About Us</Link>

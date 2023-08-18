@@ -1,0 +1,19 @@
+.form--container {
+  height: 125px;
+  display: flex;
+  align-items: flex-end;
+  background: linear-gradient(180deg, #2969bf 0%, #144e9d 100%);
+}
+
+.main--container {
+  display: grid;
+  margin: 120px 0;
+  grid-template-rows: 1fr;
+  grid-template-columns: 1fr 3fr;
+  font-family: "Poppins", sans-serif;
+}
+
+.main--container > section h2 {
+  font-weight: 300;
+  text-transform: capitalize;
+}

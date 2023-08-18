@@ -135,3 +135,32 @@ header,
   padding-left: 100px;
   padding-right: 100px;
 }
+
+
+/* ------------- FOOTER START ------------- */
+/* will work on tomorrow */
+
+.footer--container--title {
+  grid-column: 1 / 6;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 80px;
+}
+
+.footer--container--ul {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  padding: 0 100px 60px;
+}
+
+.footer--container--ul > ul > li {
+  list-style: none;
+}
+
+.plane {
+  width: 18.29px;
+  height: 18.33px;
+}
+/* ------------- FOOTER END ------------- */

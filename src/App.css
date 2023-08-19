@@ -140,27 +140,100 @@ header,
 /* ------------- FOOTER START ------------- */
 /* will work on tomorrow */
 
-.footer--container--title {
-  grid-column: 1 / 6;
+footer {
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+}
+
+.footer--title {
+  margin-bottom: 80px;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 16px;
-  margin-bottom: 80px;
 }
 
-.footer--container--ul {
+.footer--title > h2 {
+  font-weight: 600;
+  font-size: 28px;
+}
+
+.footer--title > a {
+  font-size: 16px;
+  font-weight: 300;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.footer--title > a:link,
+.footer--title > a:visited {
+  color: #2F80ED;
+}
+
+.footer--title > a:hover,
+.footer--title > a:active {
+  text-decoration: underline;
+}
+
+.footer--links {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  grid-template-columns: repeat(5, 1fr);
   padding: 0 100px 60px;
 }
 
-.footer--container--ul > ul > li {
+.footer--links > ul {
+  justify-self: center;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.footer--links > ul > li {
   list-style: none;
 }
 
-.plane {
-  width: 18.29px;
-  height: 18.33px;
+.footer--links > ul > li:first-child {
+  font-size: 16px;
+  font-weight: 500;
+  color: black;
+  margin-bottom: 10px;
 }
+
+.footer--links > ul > li > a {
+  text-decoration: none;
+}
+
+.footer--links > ul > li > a:link,
+.footer--links > ul > li > a:visited {
+  color: #4F4F4F;
+}
+
+.footer--links > ul > li > a:hover,
+.footer--links > ul > li > a:active {
+  color: #2F80ED;
+}
+
+.plane {
+  width: 18px;
+  height: 18px;
+  margin-right: 5px;
+}
+
+#next-goto {
+  margin-left: 24px;
+  margin-top: -10px;
+  color: #4F4F4F;
+}
+
+#see-more:link,
+#see-more:visited {
+  color: #2F80ED;
+}
+
+#see-more:hover, 
+#see-more:active {
+  text-decoration: underline;
+}
+
 /* ------------- FOOTER END ------------- */
